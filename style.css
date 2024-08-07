@@ -1,0 +1,383 @@
+:root {
+    --primaryColor: #f4f4f9;
+    --secondaryColor: #333;
+    --whiteColor: #fff;
+    --grayColor: #444;
+    --justColor: #555;
+    --softColor: #ddd;
+    --softblueColor: #0e6253;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2%;
+    background-color: var(--softblueColor);
+    color: var(--softColor);
+}
+
+.sidebar-menus {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-menus a,
+.sidebar-logout a {
+    padding: 5% 8%;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--primaryColor);
+}
+
+.sidebar-menus a ion-icon,
+.sidebar-logout a ion-icon {
+    font-size: 20px;
+}
+
+.sidebar-menus a:hover,
+.sidebar-logout a:hover {
+    background-color: burlywood;
+    border-radius: 50px;
+}
+
+.main {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    padding: 2%;
+    background-color: aqua;
+    margin-left: 250px;
+}
+
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.search {
+    display: flex;
+    width: 60%;
+    height: 40px;
+    justify-content: space-around;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search input {
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+.search-btn {
+    padding: 0.5rem 1rem;
+    background-color: yellowgreen;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 120px;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: yellow;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart,
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primaryColor);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0 10px;
+    height: 40px;
+    color: var(--softblueColor);
+    transition: box-shadow 0.3s;
+}
+
+.cart:hover,
+.user:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.main-highlight {
+    margin: 3% 0;
+    padding: 2%;
+    background-color: yellow;
+    border-radius: 8px;
+}
+
+.main-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 20px;
+}
+
+.main-arrow {
+    font-size: 20px;
+}
+
+.back,
+.next {
+    cursor: pointer;
+}
+
+.back:hover,
+.next:hover {
+    color: #0e6253;
+}
+
+.highlight-wrapper {
+    width: 100%;
+    display: flex;
+    padding: 1%;
+    border-radius: 8px;
+    gap: 1.5rem;
+    overflow: hidden;
+}
+
+.highlight-card {
+    display: flex;
+    flex-direction: row;
+    min-width: 200px;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    border-radius: 8px;
+    padding: 1%;
+    background-color: var(--primaryColor);
+    cursor: pointer;
+}
+
+.highlight-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-position: center;
+    object-fit: cover;
+}
+
+.highlight-desc h4 {
+    color: var(--softblueColor);
+}
+
+.highlight-desc p {
+    color: black;
+    font-size: 13px;
+}
+
+.main-menus {
+    main-height: 100%;
+    background-color: var(--whiteColor);
+    padding: 2%;
+    border-radius: 8px;
+}
+
+.main-filter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+.back-menus,
+.next-menus {
+    cursor: pointer;
+}
+
+.back-menus:hover,
+.next-menus:hover {
+    color: gainsboro;
+}
+
+.filter-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100px;
+    gap: 3rem;
+}
+
+.filter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 80px;
+    height: 100%;
+    background-color: var(--primaryColor);
+    color: black;
+    border-radius: 8px;
+    border: 1px solid seagreen;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60%;
+    font-size: 30px;
+    background-color: #d9f2ee;
+    color: green;
+    border-radius: 8px;
+}
+
+.filter-card:hover {
+    background-color: green;
+    color: var(--primaryColor);
+}
+
+.divider {
+    margin: 1rem 0;
+    height: 1px;
+    width: 100%;
+    border: none;
+    background-color: #0e6253;
+}
+
+.main-detail {
+    margin: 1rem 0 1.5rem 0;
+}
+
+.detail-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    margin-top: 1rem;
+    gap: 2%;
+    border-radius: 8px;
+}
+
+.detail-card {
+    min-height: 280px;
+    height: 100%;
+    background-color: var(--primaryColor);
+    border-radius: 8px;
+    margin: 1%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+
+.detail-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    object-position: center;
+    filter: brightness(0.8);
+}
+
+.detail-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3%;
+    width: 100%;
+}
+
+.detail-sub {
+    font-size: 12px;
+    color: var(--secondaryColor);
+    letter-spacing: 0.5px;
+    margin: 1% 0;
+}
+
+.price {
+    color: var(--softblueColor);
+}
+
+.detail-favourites {
+    font-size: 24px;
+}
+
+.detail-card:hover{
+    box-shadow: #0e6253;
+}
+
+.detail-card:hover .detail-img{
+    filter: opacity(1);
+}
+
+.detail-card:hover .price{
+    letter-spacing: 1.5;
+}
+
+/* mobile view */
+@media screen and (max-width: 640px) {
+    .sidebar{
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        text-decoration: none;
+        font-size: 20px;
+        background-color: #d9f2ee;
+        color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        height: 40px;
+        border-radius: 50%;
+        z-index: 3;
+    }
+
+    .sidebar-active {
+        display: flex;
+        z-index: 10;
+    }
+}
