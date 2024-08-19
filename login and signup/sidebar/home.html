@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <title>Home - Restaurant Management System</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="logo">Food Bite</h1>
+        <div class="sidebar-menus">
+            <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+        </div>
+        <div class="sidebar-logout">
+            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-navbar">
+            <div class="search">
+                <input type="text" placeholder="What do you want to eat?">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="profile">
+                <a class="cart" href="#"><ion-icon name="cart-outline"></ion-icon></a>
+                <a class="user" href="#"><ion-icon name="person-outline"></ion-icon></a>
+            </div>
+        </div>
+
+        <div class="home-section">
+            <h2 class="main-title">Welcome to Food Bite!</h2>
+            <p>Explore our delicious menu and place your order below.</p>
+
+            <form action="order.html" method="post" class="order-form">
+                <label for="dish">Choose Your Favorite Dish:</label>
+                <select id="dish" name="dish" required>
+                    <option value="chicken_burger">Chicken Burger - $10.45</option>
+                    <option value="fresh_fries">Fresh Fries - $15.50</option>
+                    <option value="margaritas">Margaritas - $150.00</option>
+                    <option value="nshima_tbone">Nshima & T Bone - $175.00</option>
+                    <option value="roasted_wigs">Roasted Wigs - $147.20</option>
+                    <option value="big_burger">Big Burger - $147.20</option>
+                </select>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+                <label for="special_instructions">Special Instructions:</label>
+                <textarea id="special_instructions" name="special_instructions" placeholder="Any special instructions?" rows="4"></textarea>
+
+                <button type="submit" class="order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="app.js"></script>
+</html>
