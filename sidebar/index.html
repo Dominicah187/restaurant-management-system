@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Restaurant Management System</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="logo">Food Bite</h1>
+        <div class="sidebar-menus">
+            <a href="home.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+            <a href="recom.html"><ion-icon name="thumbs-up-outline"></ion-icon> Recommendation</a>
+            <a href="menu.html"><ion-icon name="restaurant-outline"></ion-icon> Menu</a>
+            <a href="gallery.html"><ion-icon name="images-outline"></ion-icon> Gallery</a>
+            <a href="review.html"><ion-icon name="chatbubble-ellipses-outline"></ion-icon> Review</a>
+            <a href="order.html"><ion-icon name="cart-outline"></ion-icon> Order</a>
+            <a href="setting.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+        </div>
+        <div class="sidebar-logout">
+            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-navbar">
+            <ion-icon class="menu-toggle" name="menu-outline"></ion-icon>
+            <div class="search">
+                <input type="text" placeholder="What do you want to eat?">
+                <button class="search-btn">Search</button>
+            </div>
+            <div class="profile">
+                <a class="cart" href="#"><ion-icon name="cart-outline"></ion-icon></a>
+                <a class="user" href="#"><ion-icon name="person-outline"></ion-icon></a>
+            </div>
+        </div>
+        <div class="main-highlight">
+            <div class="main-header">
+                <h2 class="main-title">Recommendation</h2>
+                <div class="main-arrow">
+                    <ion-icon class="back" name="chevron-back-circle-outline"></ion-icon>
+                    <ion-icon class="next" name="chevron-forward-circle-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="highlight-wrapper">
+                <div class="highlight-card">
+                    <img class="highlight-img" src="img/breakfast.jpg" alt="Chicken Burger">
+                    <div class="highlight-desc">
+                        <h4>Chicken Burger</h4>
+                        <p>$10.45</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="img/testy fries.jpg" alt="Fresh Fries">
+                    <div class="highlight-desc">
+                        <h4>Fresh Fries</h4>
+                        <p>$15.50</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="img/thirsty.jpg" alt="Margaritas">
+                    <div class="highlight-desc">
+                        <h4>Margaritas</h4>
+                        <p>$150</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="img/nshima.jpg" alt="Nshima">
+                    <div class="highlight-desc">
+                        <h4>Nshima & T Bone</h4>
+                        <p>$175</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-menus">
+            <div class="main-filter">
+                <div>
+                    <h2 class="main-title">Menus<br>Category</h2>
+                    <div class="main-arrow">
+                        <ion-icon class="back-menus" name="chevron-back-circle-outline"></ion-icon>
+                        <ion-icon class="next-menus" name="chevron-forward-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                        </div>
+                        <p>All Menus</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="fast-food-outline"></ion-icon>
+                        </div>
+                        <p>Burger</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="pizza-outline"></ion-icon>
+                        </div>
+                        <p>Pizza</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="wine-outline"></ion-icon>
+                        </div>
+                        <p>Wine</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="ice-cream-outline"></ion-icon>
+                        </div>
+                        <p>Ice Cream</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="cafe-outline"></ion-icon>
+                        </div>
+                        <p>Coffee</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="fish-outline"></ion-icon>
+                        </div>
+                        <p>Sea Food</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="nutrition-outline"></ion-icon>
+                        </div>
+                        <p>Healthy</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="main-detail">
+                <h2 class="main-title">Choose Order</h2>
+                <div class="detail-wrapper">
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/wigs.jpg" alt="Roasted Wigs">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Roasted Wigs</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/burger.jpg" alt="Burger">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Big Burger</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/thirsty.jpg" alt="thirsty">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Fresh Cup</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/nshima.jpg" alt="Nshima">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Fresh Nshima</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/testy fries.jpg" alt="testy fries">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Fresh Fries</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/waffles.jpg" alt="waffles">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>waffles</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/grilled.jpg" alt="grilled">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>grilled</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="img/yummy.jpg" alt="yummy">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                                <h4>Testy Yummies</h4>
+                                <p class="detail-sub">These are tasty wings that you can't stop eating once you take a bite.</p>
+                                <p class="price">$147.20</p>
+                            </div>
+                            <ion-icon class="detail-favourites" name="bookmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="app.js"></script>
+</html>

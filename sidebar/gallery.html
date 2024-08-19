@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Bite - Restaurant Management System</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #ff6600;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar .top-section {
+            margin-bottom: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .sidebar a ion-icon {
+            margin-right: 10px;
+        }
+
+        /* Hover effect for Gallery and Log Out */
+        .sidebar a:hover {
+            background-color: #e65c00;
+            transform: scale(1.05);
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+        .sidebar .bottom-section a {
+            margin-bottom: 0;
+        }
+
+        /* Gallery Section Styling */
+        .gallery-section {
+            flex-grow: 1;
+            padding: 50px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .main-title {
+            font-size: 36px;
+            color: #ff6600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .gallery-desc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover .gallery-desc {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="top-section">
+            <h1>Food Bite</h1>
+            <a href="index.html"><ion-icon name="images-outline"></ion-icon> Gallery</a>
+        </div>
+        <div class="bottom-section">
+            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+        </div>
+    </div>
+
+    <!-- Unique Gallery Section -->
+    <div id="gallery" class="gallery-section">
+        <h2 class="main-title">Gallery</h2>
+        <div class="gallery-wrapper">
+            <div class="gallery-item">
+                <img src="img/lunch.jpg" alt="Delicious Dish 1">
+                <div class="gallery-desc">Delicious Dish 1</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/grilled.jpg" alt="Delicious Dish 2">
+                <div class="gallery-desc">Delicious Dish 2</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/fries and chips.jpg" alt="Delicious Dish 3">
+                <div class="gallery-desc">Delicious Dish 3</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/breakfast.jpg" alt="Delicious Dish 4">
+                <div class="gallery-desc">Delicious Dish 4</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/hamburger-with-beef-patty-tomato-onion-cheese-salad_890887-14482.jpg" alt="Delicious Dish 5">
+                <div class="gallery-desc">Delicious Dish 5</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/nshima.jpg" alt="Delicious Dish 6">
+                <div class="gallery-desc">Delicious Dish 6</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/testy fries.jpg" alt="Delicious Dish 7">
+                <div class="gallery-desc">Delicious Dish 7</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/pngtree-variety-of-fried-meat-and-vegetables-image_15846323.jpg" alt="Delicious Dish 8">
+                <div class="gallery-desc">Delicious Dish 8</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/testy meat.jpg" alt="Delicious Dish 9">
+                <div class="gallery-desc">Delicious Dish 9</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/wigs.jpg" alt="Delicious Dish 10">
+                <div class="gallery-desc">Delicious Dish 10</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/thirsty.jpg" alt="Delicious Dish 11">
+                <div class="gallery-desc">Delicious Dish 11</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/yummy.jpg" alt="Delicious Dish 12">
+                <div class="gallery-desc">Delicious Dish 12</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/lunch.jpg" alt="Delicious Dish 13">
+                <div class="gallery-desc">Delicious Dish 13</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/grilled.jpg" alt="Delicious Dish 14">
+                <div class="gallery-desc">Delicious Dish 14</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/fries and chips.jpg" alt="Delicious Dish 15">
+                <div class="gallery-desc">Delicious Dish 15</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/lunch.jpg" alt="Delicious Dish 16">
+                <div class="gallery-desc">Delicious Dish 16</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/grilled.jpg" alt="Delicious Dish 17">
+                <div class="gallery-desc">Delicious Dish 17</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/fries and chips.jpg" alt="Delicious Dish 18">
+                <div class="gallery-desc">Delicious Dish 18</div>
+            </div>
+            <!-- Add more gallery items as needed -->
+        </div>
+    </div>
+
+    <!-- Ionicons and jQuery Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

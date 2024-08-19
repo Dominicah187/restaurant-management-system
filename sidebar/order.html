@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Bite - Orders</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            scroll-behavior: smooth;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #ff6600;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-100%);
+        }
+
+        .sidebar .logo {
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .top-section,
+        .sidebar .bottom-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .top-section {
+            margin-bottom: auto;
+        }
+
+        .sidebar .top-section a,
+        .sidebar .bottom-section a {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .sidebar .top-section a ion-icon,
+        .sidebar .bottom-section a ion-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar .top-section a:hover,
+        .sidebar .bottom-section a:hover {
+            background-color: #e65c00;
+        }
+
+        /* Main Content Styling */
+        .main {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            transition: margin-left 0.3s ease, width 0.3s ease;
+        }
+
+        .main.expanded {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        /* Orders Section Styling */
+        .orders-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-title {
+            font-size: 34px;
+            color: #ff6600;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .order-card {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-card h4 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .order-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .order-card .order-status {
+            font-weight: bold;
+            color: #ff6600;
+        }
+
+        .order-card .order-actions a {
+            text-decoration: none;
+            color: #ff6600;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .order-card .order-actions a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navbar Toggle Button */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #ff6600;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                left: -200px;
+            }
+
+            .sidebar.hidden {
+                transform: translateX(0);
+            }
+
+            .main {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">Food Bite</div>
+        <div class="top-section">
+            <a href="index.html"><ion-icon name="cart-outline"></ion-icon> Order</a>
+        </div>
+        <div class="bottom-section">
+            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+        </div>
+    </div>
+
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle" id="menu-toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="orders-section">
+            <h2 class="orders-title">Your Orders</h2>
+            <div class="orders-list">
+                <div class="order-card">
+                    <div>
+                        <h4>Order #12345</h4>
+                        <p>Chicken Burger x2</p>
+                        <p>Fresh Fries x1</p>
+                        <p class="order-status">Status: Delivered</p>
+                    </div>
+                    <div class="order-actions">
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <div>
+                        <h4>Order #12346</h4>
+                        <p>Margaritas x3</p>
+                        <p>Nshima & T Bone x1</p>
+                        <p class="order-status">Status: In Progress</p>
+                    </div>
+                    <div class="order-actions">
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="order-card">
+                    <div>
+                        <h4>Order #12347</h4>
+                        <p>Big Burger x1</p>
+                        <p>Fresh Fries x2</p>
+                        <p class="order-status">Status: Cancelled</p>
+                    </div>
+                    <div class="order-actions">
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <!-- Add more orders as needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Sidebar toggle script
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            const mainContent = document.querySelector('.main');
+            mainContent.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>

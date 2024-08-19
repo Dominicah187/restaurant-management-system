@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Bite - Reviews</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            scroll-behavior: smooth; /* Smooth scrolling for internal links */
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #ff6600;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease; /* Smooth transition for sidebar toggle */
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-100%);
+        }
+
+        .sidebar .top-section {
+            margin-bottom: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar a ion-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar .bottom-section a {
+            margin-bottom: 0;
+        }
+
+        /* Review Section Styling */
+        .review-section {
+            width: calc(100% - 250px);
+            margin-left: 250px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for responsive sidebar */
+        }
+
+        .review-section.expanded {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        .review-title {
+            font-size: 36px;
+            color: #ff6600;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .review-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-card h4 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .review-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: #ff6600;
+            margin-top: 10px;
+        }
+
+        /* Navbar Toggle Button */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #ff6600;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                position: fixed;
+                top: 0;
+                left: -200px;
+            }
+
+            .sidebar.hidden {
+                transform: translateX(0);
+            }
+
+            .review-section {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="top-section">
+            <h1>Food Bite</h1>
+            <a href="index.html"><ion-icon name="chatbubble-ellipses-outline"></ion-icon> Review</a>
+        </div>
+        <div class="bottom-section">
+            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+        </div>
+    </div>
+
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle" id="menu-toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+    </div>
+
+    <!-- Review Section -->
+    <div id="review" class="review-section">
+        <h2 class="review-title">Customer Reviews</h2>
+        <div class="review-wrapper">
+            <div class="review-card">
+                <h4>Delicious Food!</h4>
+                <p>The food at Food Bite is absolutely amazing! I especially loved the Chicken Burger. The flavors were spot on!</p>
+                <p class="review-author">- John Doe</p>
+            </div>
+            <div class="review-card">
+                <h4>Great Service</h4>
+                <p>The staff is really friendly and attentive. I had a great dining experience and will definitely come back again!</p>
+                <p class="review-author">- Jane Smith</p>
+            </div>
+            <div class="review-card">
+                <h4>Best Burger in Town</h4>
+                <p>The burgers here are the best I've ever had. The fresh ingredients and perfect seasoning make it a must-try!</p>
+                <p class="review-author">- Mike Johnson</p>
+            </div>
+            <div class="review-card">
+                <h4>Highly Recommend</h4>
+                <p>Food Bite offers a great variety of dishes. Everything I've tried so far has been delicious. Highly recommend!</p>
+                <p class="review-author">- Sarah Brown</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Sidebar toggle script
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            const reviewSection = document.getElementById('review');
+            reviewSection.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>

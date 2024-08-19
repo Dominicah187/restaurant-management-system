@@ -1,0 +1,129 @@
+/* home.css */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ffffff; /* White background for sidebar */
+    border-right: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    color: #ff6600; /* Orange for logo */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-menus a,
+.sidebar-logout a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+.sidebar-menus a:hover,
+.sidebar-logout a:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    color: #ff6600; /* Orange text on hover */
+}
+
+.sidebar-menus ion-icon,
+.sidebar-logout ion-icon {
+    margin-right: 10px;
+}
+
+.sidebar-logout {
+    margin-top: auto;
+}
+
+.sidebar-logout a {
+    color: #ff0000; /* Red for logout */
+}
+
+.sidebar-logout a:hover {
+    background-color: #fdd;
+    color: #ff0000; /* Red text on hover */
+}
+
+.recommendations {
+    margin-left: 250px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #333; /* Dark text color */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.recommendation-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.recommendation-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px; /* Fixed width for cards */
+}
+
+.recommendation-item:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.recommendation-item img {
+    width: 100%;
+    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.recommendation-item h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.recommendation-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.recommendation-item span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6600; /* Orange for price */
+}

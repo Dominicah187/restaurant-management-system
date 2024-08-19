@@ -1,0 +1,256 @@
+/* General styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #FF6F00; /* Orange color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px; /* Reduced margin for closer spacing */
+}
+
+.sidebar-menus {
+    margin-bottom: auto; /* Pushes the log out link to the bottom */
+}
+
+.sidebar-menus a,
+.sidebar-logout a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 0; /* Adjusted padding for better alignment */
+    transition: 0.3s;
+}
+
+.sidebar-menus a:hover,
+.sidebar-logout a:hover {
+    background-color: #FF8C00; /* Slightly darker orange */
+    padding-left: 10px;
+}
+
+.sidebar-menus a {
+    margin-top: 10px; /* Space between the logo and the Home link */
+}
+
+.sidebar ion-icon {
+    margin-right: 10px;
+    font-size: 1.5rem; /* Adjusted icon size for better alignment */
+}
+
+.sidebar-logout {
+    margin-top: auto;
+}
+
+.sidebar-logout a {
+    margin-top: 10px; /* Consistent spacing from the bottom */
+}
+
+/* Main content styles */
+.main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-navbar .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.main-navbar .search {
+    display: flex;
+    align-items: center;
+}
+
+.search input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.search .search-btn {
+    padding: 10px 20px;
+    background-color: #FF6F00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search .search-btn:hover {
+    background-color: #FF8C00;
+}
+
+.main-navbar .profile a {
+    margin-left: 20px;
+    color: #2d2d2d;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* Home section styles */
+.home-section {
+    margin-top: 30px;
+    margin-left: 270px; /* Ensure the content is not hidden behind the sidebar */
+}
+
+.main-menus .main-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-right: 20px; /* Add padding to the right for better spacing */
+}
+
+.main-menus .main-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-left: 0; /* Ensure the title is aligned with the rest of the content */
+}
+
+.main-arrow {
+    display: flex;
+    align-items: center;
+}
+
+.main-arrow ion-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding: 20px 0; /* Increased padding for better spacing */
+}
+
+.filter-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px; /* Increased padding for better spacing */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-card:hover {
+    transform: translateY(-5px);
+}
+
+.filter-icon ion-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.filter-card p {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Menu details styles */
+.main-detail .main-title {
+    margin-bottom: 20px;
+}
+
+.detail-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.detail-card {
+    flex: 1 1 calc(33.333% - 40px);
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+}
+
+.detail-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.detail-desc {
+    padding: 20px;
+}
+
+.detail-name h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.detail-sub {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #777;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2d2d2d;
+}
+
+.detail-favourites {
+    font-size: 1.8rem;
+    color: #FF6F00;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.detail-favourites:hover {
+    color: #FF8C00;
+}
+
+/* Divider styles */
+.divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 40px 0;
+}
