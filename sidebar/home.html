@@ -4,8 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
     <title>Home - Restaurant Management System</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ff6600; /* Existing orange color */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Full height to cover the viewport */
+        }
+
+        .sidebar .logo {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menus {
+            flex: 1; /* Takes up remaining space */
+        }
+
+        .sidebar-menus a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .sidebar-menus a:hover {
+            background-color: #ff6600; /* Light coral color */
+        }
+
+        .sidebar-logout {
+            margin-top: auto; /* Pushes the Log Out button to the bottom */
+        }
+
+        .sidebar-logout a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .sidebar-logout a:hover {
+            background-color: #ff6600; /* Light coral color */
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main-navbar {
+            margin-bottom: 20px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .search input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color:  #ff6600; /* Existing orange color */
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-btn:hover {
+            background-color: #ff7f50; /* Light coral color */
+        }
+
+        .home-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .order-form {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .order-form select, .order-form input[type="number"], .order-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .order-form textarea {
+            resize: vertical;
+        }
+
+        /* General Button Styles */
+        button {
+            font-family: 'Open Sans', sans-serif;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Add to Cart Button */
+        .order-btn {
+            background-color: #ff6600; /* Use existing color if applicable */
+            margin-top: 10px;
+        }
+
+        .order-btn:hover {
+            background-color: #d43f3a; /* Darker shade of existing color */
+        }
+
+        /* Finalize Order Button */
+        .finalize-btn {
+            background-color: #4CAF50; /* Use existing color if applicable */
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        .finalize-btn:hover {
+            background-color: #388E3C; /* Darker shade of existing color */
+        }
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -24,17 +186,13 @@
                 <input type="text" placeholder="What do you want to eat?">
                 <button class="search-btn">Search</button>
             </div>
-            <div class="profile">
-                <a class="cart" href="#"><ion-icon name="cart-outline"></ion-icon></a>
-                <a class="user" href="#"><ion-icon name="person-outline"></ion-icon></a>
-            </div>
         </div>
 
         <div class="home-section">
             <h2 class="main-title">Welcome to Food Bite!</h2>
             <p>Explore our delicious menu and place your order below.</p>
 
-            <form action="order.html" method="post" class="order-form">
+            <form id="orderForm" class="order-form">
                 <label for="dish">Choose Your Favorite Dish:</label>
                 <select id="dish" name="dish" required>
                     <option value="chicken_burger">Chicken Burger - $10.45</option>
@@ -51,13 +209,58 @@
                 <label for="special_instructions">Special Instructions:</label>
                 <textarea id="special_instructions" name="special_instructions" placeholder="Any special instructions?" rows="4"></textarea>
 
-                <button type="submit" class="order-btn">Place Order</button>
+                <button type="submit" class="order-btn">Add to Cart</button>
             </form>
+
+            <!-- Button to finalize and view orders -->
+            <button id="finalizeOrderBtn" class="finalize-btn">View Cart / Finalize Orders</button>
         </div>
     </div>
+
+    <!-- JavaScript for handling multiple orders and cart management -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Handle order submission
+            $('#orderForm').on('submit', function(e) {
+                e.preventDefault();
+
+                const dish = $('#dish').val();
+                const quantity = $('#quantity').val();
+                const specialInstructions = $('#special_instructions').val() || 'None';
+
+                // Retrieve existing orders from localStorage
+                let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+                // Create a new order
+                const newOrder = {
+                    id: orders.length + 1,
+                    dish: $('#dish option:selected').text(),
+                    quantity: quantity,
+                    specialInstructions: specialInstructions,
+                    status: 'In Progress'
+                };
+
+                // Add the new order to the list
+                orders.push(newOrder);
+
+                // Save back to localStorage
+                localStorage.setItem('orders', JSON.stringify(orders));
+
+                // Clear the form for the next order
+                $('#orderForm')[0].reset();
+
+                alert('Order added! You can continue adding more dishes or view your cart.');
+            });
+
+            // Handle view cart / finalize order
+            $('#finalizeOrderBtn').on('click', function() {
+                window.location.href = 'order.html';
+            });
+        });
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="app.js"></script>
 </html>
