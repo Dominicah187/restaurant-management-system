@@ -17,7 +17,7 @@
             flex-direction: column;
             align-items: center;
             padding-top: 50px;
-            scroll-behavior: smooth; /* Smooth scrolling for internal links */
+            scroll-behavior: smooth;
         }
 
         /* Sidebar Styling */
@@ -33,15 +33,11 @@
             position: fixed;
             top: 0;
             left: 0;
-            transition: transform 0.3s ease; /* Smooth transition for sidebar toggle */
+            transition: transform 0.3s ease;
         }
 
         .sidebar.hidden {
             transform: translateX(-100%);
-        }
-
-        .sidebar .top-section {
-            margin-bottom: auto;
         }
 
         .sidebar h1 {
@@ -52,7 +48,6 @@
         }
 
         .sidebar a {
-            display: block;
             color: #ffffff;
             font-size: 18px;
             text-decoration: none;
@@ -61,16 +56,8 @@
             align-items: center;
         }
 
-        .sidebar a ion-icon {
-            margin-right: 10px;
-        }
-
         .sidebar a:hover {
             text-decoration: underline;
-        }
-
-        .sidebar .bottom-section a {
-            margin-bottom: 0;
         }
 
         /* Review Section Styling */
@@ -81,12 +68,7 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for responsive sidebar */
-        }
-
-        .review-section.expanded {
-            width: 100%;
-            margin-left: 0;
+            transition: width 0.3s ease, margin-left 0.3s ease;
         }
 
         .review-title {
@@ -95,7 +77,6 @@
             margin-bottom: 20px;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .review-wrapper {
@@ -128,37 +109,47 @@
             margin-top: 10px;
         }
 
-        /* Navbar Toggle Button */
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: #ff6600;
+        /* Star Rating */
+        .stars {
+            display: flex;
+            gap: 5px;
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-                position: fixed;
-                top: 0;
-                left: -200px;
-            }
+        .stars i {
+            font-size: 18px;
+            color: #ff6600;
+            cursor: pointer;
+        }
 
-            .sidebar.hidden {
-                transform: translateX(0);
-            }
+        /* Form Styling */
+        .review-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
 
-            .review-section {
-                width: 100%;
-                margin-left: 0;
-            }
+        .review-form input, .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-            .menu-toggle {
-                display: block;
-            }
+        .review-form button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .review-form button:hover {
+            background-color: #e05500;
         }
     </style>
 </head>
@@ -167,10 +158,10 @@
     <div class="sidebar" id="sidebar">
         <div class="top-section">
             <h1>Food Bite</h1>
-            <a href="index.html"><ion-icon name="chatbubble-ellipses-outline"></ion-icon> Review</a>
+            <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
         </div>
         <div class="bottom-section">
-            <a href="login.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+            <a href="login.html">Log Out</a>
         </div>
     </div>
 
@@ -182,42 +173,86 @@
     <!-- Review Section -->
     <div id="review" class="review-section">
         <h2 class="review-title">Customer Reviews</h2>
-        <div class="review-wrapper">
-            <div class="review-card">
-                <h4>Delicious Food!</h4>
-                <p>The food at Food Bite is absolutely amazing! I especially loved the Chicken Burger. The flavors were spot on!</p>
-                <p class="review-author">- John Doe</p>
-            </div>
-            <div class="review-card">
-                <h4>Great Service</h4>
-                <p>The staff is really friendly and attentive. I had a great dining experience and will definitely come back again!</p>
-                <p class="review-author">- Jane Smith</p>
-            </div>
-            <div class="review-card">
-                <h4>Best Burger in Town</h4>
-                <p>The burgers here are the best I've ever had. The fresh ingredients and perfect seasoning make it a must-try!</p>
-                <p class="review-author">- Mike Johnson</p>
-            </div>
-            <div class="review-card">
-                <h4>Highly Recommend</h4>
-                <p>Food Bite offers a great variety of dishes. Everything I've tried so far has been delicious. Highly recommend!</p>
-                <p class="review-author">- Sarah Brown</p>
-            </div>
+        
+        <!-- Review Submission Form -->
+        <div class="review-form">
+            <h3>Leave a Review</h3>
+            <form id="reviewForm">
+                <input type="text" id="reviewTitle" placeholder="Title" required />
+                <textarea id="reviewContent" rows="4" placeholder="Your review..." required></textarea>
+                <input type="text" id="reviewAuthor" placeholder="Your name" required />
+                <div class="stars" id="starRating">
+                    <i class="fa fa-star" data-value="1"></i>
+                    <i class="fa fa-star" data-value="2"></i>
+                    <i class="fa fa-star" data-value="3"></i>
+                    <i class="fa fa-star" data-value="4"></i>
+                    <i class="fa fa-star" data-value="5"></i>
+                </div>
+                <input type="hidden" id="reviewStars" value="0">
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="review-wrapper" id="reviews">
+            <!-- Dynamic reviews will be appended here -->
         </div>
     </div>
 
     <!-- JavaScript -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
-        // Sidebar toggle script
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('hidden');
-            const reviewSection = document.getElementById('review');
-            reviewSection.classList.toggle('expanded');
+        const starRating = document.getElementById('starRating');
+        const stars = starRating.querySelectorAll('i');
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                currentRating = this.getAttribute('data-value');
+                document.getElementById('reviewStars').value = currentRating;
+                updateStars();
+            });
+        });
+
+        function updateStars() {
+            stars.forEach(star => {
+                star.classList.remove('selected');
+                if (parseInt(star.getAttribute('data-value')) <= currentRating) {
+                    star.classList.add('selected');
+                }
+            });
+        }
+
+        // Handle review form submission
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewWrapper = document.getElementById('reviews');
+
+        reviewForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('reviewTitle').value;
+            const content = document.getElementById('reviewContent').value;
+            const author = document.getElementById('reviewAuthor').value;
+            const stars = document.getElementById('reviewStars').value;
+
+            // Create new review card
+            const newReview = `
+                <div class="review-card">
+                    <h4>${title}</h4>
+                    <p>${content}</p>
+                    <div class="stars">
+                        ${Array.from({length: stars}, () => `<i class="fa fa-star"></i>`).join('')}
+                    </div>
+                    <p class="review-author">- ${author}</p>
+                </div>
+            `;
+
+            reviewWrapper.insertAdjacentHTML('beforeend', newReview);
+
+            // Clear form
+            reviewForm.reset();
+            currentRating = 0;
+            updateStars();
         });
     </script>
 </body>
