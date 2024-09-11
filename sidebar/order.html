@@ -206,40 +206,7 @@
         <div class="orders-section">
             <h2 class="orders-title">Your Orders</h2>
             <div class="orders-list">
-                <div class="order-card">
-                    <div>
-                        <h4>Order #12345</h4>
-                        <p>Chicken Burger x2</p>
-                        <p>Fresh Fries x1</p>
-                        <p class="order-status">Status: Delivered</p>
-                    </div>
-                    <div class="order-actions">
-                        <a href="#">View Details</a>
-                    </div>
-                </div>
-                <div class="order-card">
-                    <div>
-                        <h4>Order #12346</h4>
-                        <p>Margaritas x3</p>
-                        <p>Nshima & T Bone x1</p>
-                        <p class="order-status">Status: In Progress</p>
-                    </div>
-                    <div class="order-actions">
-                        <a href="#">View Details</a>
-                    </div>
-                </div>
-                <div class="order-card">
-                    <div>
-                        <h4>Order #12347</h4>
-                        <p>Big Burger x1</p>
-                        <p>Fresh Fries x2</p>
-                        <p class="order-status">Status: Cancelled</p>
-                    </div>
-                    <div class="order-actions">
-                        <a href="#">View Details</a>
-                    </div>
-                </div>
-                <!-- Add more orders as needed -->
+                <!-- Orders will be dynamically loaded here -->
             </div>
         </div>
     </div>
@@ -248,7 +215,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="app.js"></script>
+
     <script>
         // Sidebar toggle script
         document.getElementById('menu-toggle').addEventListener('click', function() {
@@ -257,6 +224,83 @@
             const mainContent = document.querySelector('.main');
             mainContent.classList.toggle('expanded');
         });
+
+        $(document).ready(function() {
+    const ordersList = $('.orders-list');
+
+    // Get orders from localStorage
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    // Get already displayed orders from localStorage or set an empty array
+    let displayedOrderIds = JSON.parse(localStorage.getItem('displayedOrderIds')) || [];
+
+    if (orders.length > 0) {
+        orders.forEach(order => {
+            // Check if the order ID has already been displayed
+            if (!displayedOrderIds.includes(order.id)) {
+                const orderCard = `
+                    <div class="order-card" id="order-${order.id}">
+                        <div>
+                            <h4>Order #${order.id}</h4>
+                            <p>${order.dish} x${order.quantity}</p>
+                            <p class="order-status">Status: ${order.status}</p>
+                        </div>
+                        <div class="order-actions">
+                            <a href="#" onclick="viewOrderDetails(${order.id})">View Details</a>
+                            <a href="#" onclick="deleteOrder(${order.id})" class="delete-btn" style="color:red; margin-left:10px;">Delete</a>
+                        </div>
+                    </div>
+                `;
+                // Append order card to the orders list
+                ordersList.append(orderCard);
+
+                // Mark the order as displayed by adding its ID to the array
+                displayedOrderIds.push(order.id);
+            }
+        });
+
+        // Update the displayed order IDs in localStorage
+        localStorage.setItem('displayedOrderIds', JSON.stringify(displayedOrderIds));
+    } else {
+        ordersList.append('<p>No orders yet.</p>');
+    }
+});
+
+// Function to view details of an order
+function viewOrderDetails(orderId) {
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const order = orders.find(o => o.id === orderId);
+
+    if (order) {
+        alert(`
+            Order #${order.id}\n
+            Dish: ${order.dish}\n
+            Quantity: ${order.quantity}\n
+            Special Instructions: ${order.specialInstructions}\n
+            Status: ${order.status}
+        `);
+    }
+}
+
+// Function to delete an order
+function deleteOrder(orderId) {
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    
+    // Remove the order with the given ID
+    orders = orders.filter(order => order.id !== orderId);
+
+    // Save updated orders back to localStorage
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Remove the order from the displayed list
+    $(`#order-${orderId}`).remove();
+
+    // Update the displayedOrderIds to remove the deleted order
+    let displayedOrderIds = JSON.parse(localStorage.getItem('displayedOrderIds')) || [];
+    displayedOrderIds = displayedOrderIds.filter(id => id !== orderId);
+    localStorage.setItem('displayedOrderIds', JSON.stringify(displayedOrderIds));
+}
+
     </script>
 </body>
 </html>
