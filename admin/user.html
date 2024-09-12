@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Manage Users</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .user-management {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .user-management h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .user-list {
+            margin-bottom: 20px;
+        }
+
+        .user-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .user-list th, .user-list td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .user-list th {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .user-actions button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .user-actions button:hover {
+            background: #e68900;
+        }
+
+        .user-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .user-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .user-form input, .user-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .user-form button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .user-form button:hover {
+            background: #ff9800;
+        }
+
+        .back-button {
+            background: #f57c00;
+            color:  white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            background: #d4d4d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="goBack()">Back to Home</button>
+
+        <div class="user-management">
+            <h2>Manage Users</h2>
+
+            <!-- User List -->
+            <div class="user-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-items">
+                        <!-- User items will be populated here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- User Form -->
+            <div class="user-form">
+                <h3>Add / Update User</h3>
+                <form id="user-form">
+                    <label for="user-id">User ID (for update)</label>
+                    <input type="text" id="user-id" name="id">
+                    
+                    <label for="user-name">Name</label>
+                    <input type="text" id="user-name" name="name" required>
+                    
+                    <label for="user-email">Email</label>
+                    <input type="email" id="user-email" name="email" required>
+                    
+                    <label for="user-status">Status</label>
+                    <select id="user-status" name="status" required>
+                        <option value="Active">Active</option>
+                        <option value="Blocked">Blocked</option>
+                    </select>
+                    
+                    <button type="submit">Add / Update User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('user-form');
+            const userItemsTable = document.getElementById('user-items');
+
+            // Sample user data
+            let users = [
+                { id: '1', name: 'Alice Johnson', email: 'alice@example.com', status: 'Active' },
+                { id: '2', name: 'Bob Smith', email: 'bob@example.com', status: 'Blocked' }
+            ];
+
+            // Function to update the user list
+            function updateUserList() {
+                userItemsTable.innerHTML = '';
+                users.forEach(user => {
+                    userItemsTable.innerHTML += `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.status}</td>
+                            <td>
+                                <button class="edit-btn" data-id="${user.id}">Edit</button>
+                                <button class="delete-btn" data-id="${user.id}">Delete</button>
+                                <button class="block-btn" data-id="${user.id}">${user.status === 'Active' ? 'Block' : 'Unblock'}</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                // Add edit, delete, and block/unblock functionality
+                document.querySelectorAll('.edit-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const userId = this.getAttribute('data-id');
+                        const user = users.find(u => u.id === userId);
+                        if (user) {
+                            document.getElementById('user-id').value = user.id;
+                            document.getElementById('user-name').value = user.name;
+                            document.getElementById('user-email').value = user.email;
+                            document.getElementById('user-status').value = user.status;
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const userId = this.getAttribute('data-id');
+                        users = users.filter(u => u.id !== userId);
+                        updateUserList();
+                    });
+                });
+
+                document.querySelectorAll('.block-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const userId = this.getAttribute('data-id');
+                        const user = users.find(u => u.id === userId);
+                        if (user) {
+                            user.status = user.status === 'Active' ? 'Blocked' : 'Active';
+                            updateUserList();
+                        }
+                    });
+                });
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const userId = document.getElementById('user-id').value;
+                const userName = document.getElementById('user-name').value;
+                const userEmail = document.getElementById('user-email').value;
+                const userStatus = document.getElementById('user-status').value;
+
+                if (userId) {
+                    // Update existing user
+                    const user = users.find(u => u.id === userId);
+                    if (user) {
+                        user.name = userName;
+                        user.email = userEmail;
+                        user.status = userStatus;
+                    }
+                } else {
+                    // Add new user
+                    const newUser = {
+                        id: (users.length + 1).toString(),
+                        name: userName,
+                        email: userEmail,
+                        status: userStatus
+                    };
+                    users.push(newUser);
+                }
+
+                form.reset();
+                updateUserList();
+            });
+
+            // Initial load of user items
+            updateUserList();
+        });
+
+        // Function to go back to the home page
+        function goBack() {
+            window.location.href = 'home.html'; // Change 'index.html' to your actual home page URL
+        }
+    </script>
+</body>
+</html>

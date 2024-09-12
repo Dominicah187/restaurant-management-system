@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Admin Dashboard | Restaurant Management</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .admin-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #f57c00;
+            padding: 40px 20px; /* Added more padding for breathing room */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .admin-sidebar h1 {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .admin-sidebar a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            margin-bottom: 25px; /* Increased margin for better spacing */
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-sidebar a:hover {
+            background-color: #ff9800;
+            border-radius: 4px;
+        }
+
+        .admin-sidebar ion-icon {
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .admin-main {
+            margin-left: 300px; /* Increased margin between sidebar and main content */
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .admin-main h2 {
+            font-size: 28px;
+            margin-bottom: 30px; /* Added more margin for better spacing */
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px; /* Increased gap between stat cards */
+            width: 100%;
+        }
+
+        .stats-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stats-card p {
+            font-size: 18px;
+            color: #757575;
+        }
+
+        /* Orders Table */
+        .orders-table {
+            margin-top: 50px;
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .orders-table th {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .orders-table tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.2s ease;
+        }
+
+        .edit-btn,
+        .delete-btn,
+        .payment-btn {
+            background-color: #f57c00;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn:hover,
+        .delete-btn:hover,
+        .payment-btn:hover {
+            background-color: #ff9800;
+        }
+
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                width: 100%;
+                position: relative;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .admin-main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+        <h1>Admin Panel</h1>
+        <a href="dashboard.html"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
+        <a href="order.html"><ion-icon name="cart-outline"></ion-icon> Manage Orders</a>
+        <a href="menu.html"><ion-icon name="restaurant-outline"></ion-icon> Manage Menu</a>
+        <a href="user.html"><ion-icon name="people-outline"></ion-icon> Manage Users</a>
+        <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+        <a href="index.html"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+        <h2>Welcome, Admin</h2>
+
+        <!-- Dashboard Stats -->
+        <div class="stats-grid">
+            <div class="stats-card">
+                <h3>Total Orders</h3>
+                <p>150</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total Revenue</h3>
+                <p>$12,300</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total Users</h3>
+                <p>80</p>
+            </div>
+            <div class="stats-card">
+                <h3>Menu Items</h3>
+                <p>25</p>
+            </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <h2>Recent Orders</h2>
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Item</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#101</td>
+                    <td>John Doe</td>
+                    <td>Burger & Fries</td>
+                    <td>$12.45</td>
+                    <td>Pending</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#102</td>
+                    <td>Jane Smith</td>
+                    <td>Pizza</td>
+                    <td>$15.99</td>
+                    <td>Completed</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.querySelectorAll('.payment-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Fetch and display payment info for the order (this is a placeholder action)
+                alert(`Viewing payment details for Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for editing order details (this is a placeholder action)
+                alert(`Editing Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for deleting the order (this is a placeholder action)
+                alert(`Deleting Order ID: ${orderId}`);
+                this.parentElement.parentElement.remove(); // Remove order row from the table
+            });
+        });
+    </script>
+</body>
+
+</html>

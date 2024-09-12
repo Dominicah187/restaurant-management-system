@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Manage Orders | Restaurant Management</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        /* Orders Table */
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .orders-table th {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .orders-table tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.2s ease;
+        }
+
+        .edit-btn,
+        .delete-btn,
+        .payment-btn,
+        .back-btn {
+            background-color: #f57c00;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .edit-btn:hover,
+        .delete-btn:hover,
+        .payment-btn:hover,
+        .back-btn:hover {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Manage Orders</h2>
+
+        <!-- Back to Dashboard Button -->
+        <button class="back-btn" onclick="window.location.href='home.html';">Back to Dashboard</button>
+
+        <!-- Orders Table -->
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Item</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#101</td>
+                    <td>John Doe</td>
+                    <td>Burger & Fries</td>
+                    <td>$12.45</td>
+                    <td>Pending</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#102</td>
+                    <td>Jane Smith</td>
+                    <td>Pizza</td>
+                    <td>$15.99</td>
+                    <td>Completed</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.querySelectorAll('.payment-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Fetch and display payment info for the order (this is a placeholder action)
+                alert(`Viewing payment details for Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for editing order details (this is a placeholder action)
+                alert(`Editing Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for deleting the order (this is a placeholder action)
+                alert(`Deleting Order ID: ${orderId}`);
+                this.parentElement.parentElement.remove(); // Remove order row from the table
+            });
+        });
+    </script>
+</body>
+
+</html>

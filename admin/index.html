@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Admin Login - Food Bite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: #eceff1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #2e2e2e;
+        }
+
+        .admin-login-container {
+            background-color: #fff;
+            padding: 3rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .admin-login-container:hover {
+            transform: scale(1.02);
+        }
+
+        .admin-login-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #ff6600;
+        }
+
+        .input-group .input-icon {
+            position: absolute;
+            top: 75%;
+            left: 15px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .input-group input.padding-icon {
+            padding-left: 40px;
+        }
+
+        .admin-login-btn {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-login-btn:hover {
+            background-color: #e65a00;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 0.5rem;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .forgot-password:hover {
+            color: #ff6600;
+        }
+
+        .additional-links {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .additional-links a {
+            color: #ff6600;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .additional-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <h1 class="admin-login-title">Admin Login</h1>
+        <form id="adminLoginForm">
+            <div class="input-group">
+                <div class="input-icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <label for="adminUsername">Username</label>
+                <input type="text" id="adminUsername" name="adminUsername" class="padding-icon" placeholder="Enter admin username" required>
+            </div>
+            <div class="input-group">
+                <div class="input-icon">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </div>
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" name="adminPassword" class="padding-icon" placeholder="Enter admin password" required>
+            </div>
+            <a href="#" class="forgot-password" id="adminForgotPassword">Forgot Password?</a>
+            <button type="submit" class="admin-login-btn">Login</button>
+        </form>
+        <div class="additional-links">
+            <a href="login.html" id="backToLogin">Back to User Login</a>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Admin Login Submitted');
+        });
+    </script>
+</body>
+</html>

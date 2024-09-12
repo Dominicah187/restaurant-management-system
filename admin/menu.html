@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Manage Menu</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-management {
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .menu-management h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .menu-list {
+            margin-bottom: 20px;
+        }
+
+        .menu-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .menu-list th, .menu-list td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .menu-list th {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .menu-actions button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .menu-actions button:hover {
+            background: #e68900;
+        }
+
+        .menu-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .menu-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .menu-form input, .menu-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .menu-form input[type="file"] {
+            padding: 0;
+        }
+
+        .menu-form button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .menu-form button:hover {
+            background: #e68900;
+        }
+
+        .home-button {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .home-button:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-management">
+        <a href="home.html" class="home-button">Back to Home</a>
+        <h2>Manage Menu</h2>
+
+        <!-- Menu List -->
+        <div class="menu-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-items">
+                    <!-- Menu items will be populated here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Menu Form -->
+        <div class="menu-form">
+            <h3>Add / Update Menu Item</h3>
+            <form id="menu-form">
+                <label for="item-name">Item Name</label>
+                <input type="text" id="item-name" name="name" required>
+                
+                <label for="item-description">Description</label>
+                <textarea id="item-description" name="description" rows="4" required></textarea>
+                
+                <label for="item-price">Price</label>
+                <input type="number" id="item-price" name="price" step="0.01" required>
+                
+                <label for="item-image">Image</label>
+                <input type="file" id="item-image" name="image">
+                
+                <input type="hidden" id="item-id">
+                <button type="submit">Add / Update Item</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('menu-form');
+            const menuItemsTable = document.getElementById('menu-items');
+
+            // Function to update the menu list
+            function updateMenuList() {
+                // Example data (replace with real data fetching logic)
+                const menuItems = [
+                    { name: 'Burger', description: 'Juicy beef burger', price: '8.99', image: 'burger.jpg' },
+                    { name: 'Pizza', description: 'Cheesy pizza', price: '12.99', image: 'pizza.jpg' }
+                ];
+
+                menuItemsTable.innerHTML = '';
+
+                menuItems.forEach(item => {
+                    menuItemsTable.innerHTML += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.description}</td>
+                            <td>${item.price}</td>
+                            <td><img src="images/${item.image}" alt="${item.name}" style="width: 100px;"></td>
+                            <td>
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                // Add edit and delete functionality
+                document.querySelectorAll('.edit-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Handle edit functionality
+                        alert('Edit functionality not implemented');
+                    });
+                });
+
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Handle delete functionality
+                        alert('Delete functionality not implemented');
+                    });
+                });
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+
+                // Example logging the form data
+                console.log('Form Data:', formData);
+
+                // Handle file upload and other data processing here
+
+                // After processing, reset form and update the menu list
+                form.reset();
+                updateMenuList();
+            });
+
+            // Initial load of menu items
+            updateMenuList();
+        });
+    </script>
+</body>
+</html>

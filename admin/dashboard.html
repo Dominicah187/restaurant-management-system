@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Admin Dashboard | Restaurant Management</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Main Content */
+        .admin-main {
+            margin-left: 300px; /* Adjust if sidebar is present */
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .admin-main h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .stats-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stats-card p {
+            font-size: 18px;
+            color: #757575;
+        }
+
+        /* Orders Table */
+        .orders-table {
+            margin-top: 50px;
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .orders-table th {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .orders-table tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.2s ease;
+        }
+
+        .edit-btn,
+        .delete-btn,
+        .payment-btn,
+        .back-btn {
+            background-color: #f57c00;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .edit-btn:hover,
+        .delete-btn:hover,
+        .payment-btn:hover,
+        .back-btn:hover {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+        <h2>Welcome, Admin</h2>
+
+        <!-- Back to Main Page Button -->
+        <button class="back-btn" onclick="window.location.href='home.html';">Back to Main Page</button>
+
+        <!-- Dashboard Stats -->
+        <div class="stats-grid">
+            <div class="stats-card">
+                <h3>Total Orders</h3>
+                <p>150</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total Revenue</h3>
+                <p>$12,300</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total Users</h3>
+                <p>80</p>
+            </div>
+            <div class="stats-card">
+                <h3>Menu Items</h3>
+                <p>25</p>
+            </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <h2>Recent Orders</h2>
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Item</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#101</td>
+                    <td>John Doe</td>
+                    <td>Burger & Fries</td>
+                    <td>$12.45</td>
+                    <td>Pending</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#102</td>
+                    <td>Jane Smith</td>
+                    <td>Pizza</td>
+                    <td>$15.99</td>
+                    <td>Completed</td>
+                    <td><button class="payment-btn">View Payment</button></td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.querySelectorAll('.payment-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Fetch and display payment info for the order (this is a placeholder action)
+                alert(`Viewing payment details for Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for editing order details (this is a placeholder action)
+                alert(`Editing Order ID: ${orderId}`);
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.parentElement.parentElement.firstElementChild.textContent;
+                // Code for deleting the order (this is a placeholder action)
+                alert(`Deleting Order ID: ${orderId}`);
+                this.parentElement.parentElement.remove(); // Remove order row from the table
+            });
+        });
+    // Function to fetch stats from the server and update the dashboard
+    function fetchStats() {
+        fetch('/admin/stats')
+            .then(response => response.json())
+            .then(data => {
+                // Update stats on the dashboard
+                document.querySelector('.stats-card:nth-child(1) p').textContent = data.totalOrders;
+                document.querySelector('.stats-card:nth-child(2) p').textContent = `$${data.totalRevenue}`;
+                document.querySelector('.stats-card:nth-child(3) p').textContent = data.totalUsers;
+                document.querySelector('.stats-card:nth-child(4) p').textContent = data.totalMenuItems;
+            })
+            .catch(error => console.error('Error fetching stats:', error));
+    }
+
+    // Call fetchStats when the page loads
+    document.addEventListener('DOMContentLoaded', fetchStats);
+
+    // Optionally, refresh the stats every minute
+    setInterval(fetchStats, 60000); // Fetch stats every 60 seconds
+    </script>
+</body>
+
+</html>
